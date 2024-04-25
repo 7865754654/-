@@ -1,0 +1,80 @@
+CREATE TABLE Должность (
+id_Должности INT PRIMARY KEY,
+должность varchar(50)
+);
+
+CREATE TABLE Сотрудники(
+id_Сторудника INT PRIMARY KEY,
+id_должность varchar(50) Foreign KEY,
+ФИО varchar(50),
+Дата рождения datetime,
+Телефон char,
+Адрес электронной почты varchar(50),
+id_услуги int Foreign KEY
+);
+
+CREATE TABLE Услуги (
+id_услуги INT PRIMARY KEY,
+Название varchar(50),
+Описание varchar(50),
+Цена numeric,
+Категория varchar(50),
+Дата начала datetime,
+Дата окончания datetime
+);
+
+CREATE TABLE Клинты (
+id_клиента INT PRIMARY KEY,
+id_услуги INT int Foreign KEY,
+id_заказа INT int Foreign KEY,
+должность varchar(50)
+ФИО varchar(50),
+Дата рождения datetime,
+Телефон char,
+Адрес электронной почты varchar(50),
+id_отзывы INT int Foreign KEY
+);
+
+CREATE TABLE Заказы (
+id_заказа INT PRIMARY KEY,
+Наименование услуги varchar(50),
+Дата выполнения datetime,
+Сотрудник varchar(50),
+Статус выполнения bit
+);
+
+CREATE TABLE Отзывы (
+id_отзыва INT PRIMARY KEY,
+оценка varchar(50),
+содержание varchar(50)
+);
+
+CREATE TABLE Бронирование помещения (
+id_Бронирования_помещения INT PRIMARY KEY,
+id_зала int Foreign KEY,
+Дата datetime,
+Время начала datetime,
+Время окончания datetime,
+Количество часов int,
+id_клиента INT Foreign KEY,
+id_сотрудника int Foreign KEY
+);
+
+CREATE TABLE Залы (
+id_Зала INT PRIMARY KEY,
+Название varchar(50),
+Вместимость int,
+Тип освещения varchar(50),
+Стоимость аренды numeric,
+id_оборудования INT  Foreign KEY,
+);
+
+CREATE TABLE Оборудование (
+id_оборудования INT PRIMARY KEY,
+Название varchar(50),
+Модель varchar(50),
+Производитель varchar(50),
+Состояние varchar(50),
+Дата покупки datetime,
+Стоимость numeric
+);
